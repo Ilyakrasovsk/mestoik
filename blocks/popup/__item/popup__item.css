@@ -12,7 +12,7 @@
   line-height: 17px;
   padding-bottom: 13px;
 }
-.popup__item:last-of-type {
+.popup__item:nth-last-child(2) {
   margin-top: 30px;
 }
 @media screen and (max-width:580px) {

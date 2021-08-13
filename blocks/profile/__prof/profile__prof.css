@@ -7,6 +7,9 @@
   font-size: 18px;
   line-height: 22px;
   padding-top: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 @media screen and (max-width:768px) {
   .profile__prof {
@@ -18,7 +21,6 @@
   .profile__prof {
     max-width: 282px;
     text-align: center;
-    font-size: 14px;
     line-height: 17px;
   }
 }

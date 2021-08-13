@@ -1,7 +1,15 @@
 .element__like {
-  padding-right: 21px;
   cursor: pointer;
+  width: 22px;
+  height: 19px;
+  margin-right: 20px;
+  border: 0;
+  background-color: #fff;
   transition: opacity .4s linear;
+  background-image: url(../../../images/like.svg);
+  background-size: inherit;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .element__like:hover {
   opacity: .5;

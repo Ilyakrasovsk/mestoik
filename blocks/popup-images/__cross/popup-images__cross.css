@@ -1,0 +1,27 @@
+.popup-images__cross {
+  border: 0;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  transition: opacity .4s linear;
+  background-color: inherit;
+  background-image: url(../../../images/Closeicon.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.popup-images__cross:hover {
+  cursor: pointer;
+  opacity: .6;
+}
+@media screen and (max-width:580px) {
+  .popup-images__cross {
+    width: 20px;
+    height: 20px;
+    top: -36px;
+    right: 0px;
+  }
+}

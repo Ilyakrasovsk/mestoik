@@ -11,16 +11,16 @@ const popupCloseAdd = document.querySelector('.popup__cross_add');
 
 function openPopup(popupElement) {
   popupElement.classList.add('popup_open');
-}
+};
 
 function openProfilePopup() {
   nameInput.value = profileName.textContent;
   profInput.value = profileProf.textContent;
   openPopup(popupProfile);
-}
+};
 function closePopup (popupElement) {
   popupElement.classList.remove('popup_open');
-}
+};
 buttonEdit.addEventListener('click', () => openProfilePopup(popupProfile));
 buttonPopupClose.addEventListener('click',() => closePopup(popupProfile));
 buttonPopupAdd.addEventListener('click', () => openPopup(popupAdd));
@@ -43,7 +43,7 @@ function profileFormSubmitHandler (evt) {
 	 profileProf.textContent = profInput.value;
 
    closePopup (popupProfile);
-}
+};
 
 formElement.addEventListener('submit', profileFormSubmitHandler);
 

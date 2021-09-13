@@ -23,7 +23,7 @@
   }
 }
 
-/* .popup__item::-webkit-input-placeholder {
+.popup__item::-webkit-input-placeholder {
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -46,4 +46,4 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-} */
+} 

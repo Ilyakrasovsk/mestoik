@@ -11,7 +11,24 @@ const popupCloseAdd = document.querySelector('.popup__cross_add');
 
 function openPopup(popupElement) {
   popupElement.classList.add('popup_open');
+  document.addEventListener('keydown', function(evt) {
+    if (evt.key === 'Escape') {
+
+      closePopup(popupProfile);
+      closePopup(popupAdd);
+      closePopup(popupImageCard);
+    }
+  });
 };
+
+popupProfile.addEventListener('click',() => closePopup(popupProfile));
+document.querySelector('.popup__container').addEventListener('click', function (evt) {
+  evt.stopPropagation();
+});
+popupAdd.addEventListener('click',() => closePopup(popupAdd));
+document.querySelector('.popup__container_add').addEventListener('click', function (evt) {
+  evt.stopPropagation();
+});
 
 function openProfilePopup() {
   nameInput.value = profileName.textContent;
@@ -100,14 +117,16 @@ function creatCard(data){
 
     openPopup(popupImageCard);
    });
+   popupImageCard.addEventListener('click',() => closePopup(popupImageCard));
+   document.querySelector('.popup__container_images').addEventListener('click', function (evt) {
+     evt.stopPropagation();
+   });
    return cardElement;
-  };
+};
 
-
-  function addCard(data){
+function addCard(data){
     cardsContainer.prepend(creatCard(data));
-  };
-
+};
 
 const cardFormSubmitHandler = (evt) => {
 	evt.preventDefault();

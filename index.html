@@ -42,25 +42,29 @@
             type="text"
             id="name"
             class="popup__item"
-            maxlength="20"
+            minlength="2"
+            maxlength="40"
             name="name"
             required
           />
+          <span id="name-error" class="popup__error"></span>
           <input
             type="text"
             id="prof"
             class="popup__item"
-            maxlength="30"
+            minlength="2"
+            maxlength="200"
             name="prof"
             required
           />
+          <span id="prof-error" class="popup__error"></span>
           <input type="submit" name="submit" class="popup__button" value="Сохранить" />
         </form>
       </div>
     </div>
 
     <div class="popup popup_add">
-      <div class="popup__container">
+      <div class="popup__container popup__container_add">
         <button type="button" name="cross" class="popup__cross popup__cross_add"></button>
         <h2 class="popup__heading">Новое место </h2>
         <form name="form" class="popup__input-container popup__input-container_add">
@@ -69,17 +73,21 @@
             type="text"
             class="popup__item popup__item_add"
             name="mesto"
-            placeholder="Название"
             required
+            placeholder="Название"
           />
+          <span id="mesto-error" class="popup__error"></span>
           <input
             id="link"
-            type="text"
+            type="url"
             class="popup__item popup__item_add"
-            name="prof"
-            placeholder="Ссылка на картинку"
+            name="link"
+            minlength="2"
+            maxlength="200"
             required
+            placeholder="Ссылка на картинку"
           />
+          <span id="link-error" class="popup__error"></span>
           <input type="submit" name="add" class="popup__button" value="Создать" />
         </form>
       </div>
@@ -108,5 +116,6 @@
       </div>
     </template>
     <script src="script/index.js"></script>
+    <script src="script/valid.js"></script>
   </body>
 </html>

@@ -1,5 +1,4 @@
 const buttonEdit = document.querySelector('.profile__edit-button');
-const buttonPopupClose = document.querySelector('.popup__cross');
 const popupProfile =  document.querySelector('.popup');
 const nameInput = document.querySelector('#name');
 const profInput = document.querySelector('#prof');
@@ -7,8 +6,8 @@ const profileName = document.querySelector('.profile__name');
 const profileProf = document.querySelector('.profile__prof');
 const buttonPopupAdd = document.querySelector('.profile__add-button');
 const popupAdd = document.querySelector('.popup_add');
-const popupCloseAdd = document.querySelector('.popup__cross_add');
-
+//const popupCloseAdd = document.querySelector('.popup__cross_add');
+//const buttonPopupClose = document.querySelector('.popup__cross');
 
 function closePopupEscape (evt) {
   const popupActive = document.querySelector('.popup_open');
@@ -20,16 +19,17 @@ function closePopupEscape (evt) {
 function openPopup(popupElement) {
   popupElement.classList.add('popup_open');
   document.addEventListener('keydown', closePopupEscape);
+  document.addEventListener('mousedown', cardFormModalWindow);
 };
 
-popupProfile.addEventListener('click',() => closePopup(popupProfile));
-document.querySelector('.popup__container').addEventListener('click', function (evt) {
-  evt.stopPropagation();
-});
-popupAdd.addEventListener('click',() => closePopup(popupAdd));
-document.querySelector('.popup__container_add').addEventListener('click', function (evt) {
-  evt.stopPropagation();
-});
+// popupProfile.addEventListener('click',() => closePopup(popupProfile));
+// document.querySelector('.popup__container').addEventListener('click', function (evt) {
+//   evt.stopPropagation();
+// });
+// popupAdd.addEventListener('click',() => closePopup(popupAdd));
+// document.querySelector('.popup__container_add').addEventListener('click', function (evt) {
+//   evt.stopPropagation();
+// });
 
 function openProfilePopup() {
   nameInput.value = profileName.textContent;
@@ -41,16 +41,15 @@ function closePopup (popupElement) {
   document.removeEventListener('keydown', closePopupEscape);
 };
 buttonEdit.addEventListener('click', () => openProfilePopup(popupProfile));
-buttonPopupClose.addEventListener('click',() => closePopup(popupProfile));
 buttonPopupAdd.addEventListener('click', () => openPopup(popupAdd));
-popupCloseAdd.addEventListener('click',() => closePopup(popupAdd));
-
+//popupCloseAdd.addEventListener('click',() => closePopup(popupAdd));
+//buttonPopupClose.addEventListener('click',() => closePopup(popupProfile));
 
 const popupImageCard = document.querySelector('.popup_images');
 const popupImage = popupImageCard.querySelector('.popup__imag');
 const element = document.querySelector('.element');
 const popupMesto = popupImageCard.querySelector('.popup__mesto');
-const popupCloseImageCard = popupImageCard.querySelector('.popup__cross_images');
+//const popupCloseImageCard = popupImageCard.querySelector('.popup__cross_images');
 
 
 const formElement = document.querySelector('.popup__container');
@@ -141,13 +140,20 @@ elementCards.forEach((data) => {
   addCard(data);
 });
 
-const closeModalWindow = () => {
-  closePopup(popupImageCard);
+
+//Сделал немного другую реализацию закрытия по оверлею
+
+function cardFormModalWindow(evt){
+  const activePopup = document.querySelector('.popup_open');
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__cross')) {
+    closePopup(activePopup);
+  }
 };
 
-const cardFormModalWindow = document.querySelector('.popup_images');
-cardFormModalWindow.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup_images') || evt.target.classList.contains('popup__cross_images')) {
-    closeModalWindow(cardFormModalWindow);
-  }
-});
+
+// const cardFormModalWindow = document.querySelector('.popup_images');
+// cardFormModalWindow.addEventListener('click', (evt) => {
+//   if (evt.target.classList.contains('popup_images') || evt.target.classList.contains('popup__cross_images')) {
+//     closePopup(cardFormModalWindow);
+//   }
+// });

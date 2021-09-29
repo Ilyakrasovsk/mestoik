@@ -1,5 +1,5 @@
-import Card from './card.js';
-import FormValidator from './formValidity.js';
+import Card from './Card.js';
+import FormValidator from './FormValidity.js';
 const buttonEdit = document.querySelector('.profile__edit-button');
 const popupProfile =  document.querySelector('.popup');
 const nameInput = document.querySelector('#name');
@@ -9,7 +9,6 @@ const profileProf = document.querySelector('.profile__prof');
 const buttonPopupAdd = document.querySelector('.profile__add-button');
 const popupAdd = document.querySelector('.popup_add');
 
-
 function closePopupEscape (evt) {
   const popupActive = document.querySelector('.popup_open');
   if (evt.key === 'Escape') {
@@ -17,12 +16,11 @@ function closePopupEscape (evt) {
   }
 };
 
-function openPopup(popupElement) {
+export function openPopup(popupElement) {
   popupElement.classList.add('popup_open');
   document.addEventListener('keydown', closePopupEscape);
   document.addEventListener('mousedown', cardFormModalWindow);
 };
-
 
 function openProfilePopup() {
   nameInput.value = profileName.textContent;
@@ -34,14 +32,16 @@ function closePopup (popupElement) {
   document.removeEventListener('keydown', closePopupEscape);
 };
 buttonEdit.addEventListener('click', () => openProfilePopup(popupProfile));
-buttonPopupAdd.addEventListener('click', () => openPopup(popupAdd));
+buttonPopupAdd.addEventListener('click', function () {
+    inputMesto.value = '';
+    inputLink.value = '';
+   openPopup(popupAdd);
+});
 
-
-const popupImageCard = document.querySelector('.popup_images');////
+const popupImageCard = document.querySelector('.popup_images');
 const popupImage = popupImageCard.querySelector('.popup__imag');
 const element = document.querySelector('.element');
 const popupMesto = popupImageCard.querySelector('.popup__mesto');
-
 
 const formElementProfile = document.querySelector('.popup__container');
 function profileFormSubmitHandler (evt) {
@@ -107,7 +107,6 @@ formCard.addEventListener('submit', cardFormSubmitHandler);
 elementCards.forEach((data) => {
   addCard(data);
 });
-
 
 function cardFormModalWindow(evt){
   const activePopup = document.querySelector('.popup_open');

@@ -48,18 +48,18 @@ const renderCard = function (data, cardSelector) {
 }
 
 
-const сardList = new Section ({
+const cardList = new Section ({
   data: elementCards,
   renderer: (item) => {
 
     const card = renderCard(item, '#element__template');
     const cardElement = card.generateCard();
-    сardList.setItem(cardElement);
+    cardList.setItem(cardElement);
   },
 },cardsContainer
 );
 
-сardList.addItem();
+cardList.addItem();
 
 const addModalCard = new PopupWithForm ({
   popupSelector: popupAdd,

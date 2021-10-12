@@ -6,17 +6,20 @@ class Card {
     this._handleCardClick = handleCardClick;
     //this._data = data;
   }
-  _getElement() {
+  _getTemplate() {
     const cardElement = document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
+
+    //const cardElement = document.querySelector(this._cardSelector).content.cloneNode(true);
     return cardElement;
   }
-  generate() {
-    this._element = this._getElement();
+  generateCard() {
+    this._element = this._getTemplate();
     this._setEventListeners();
+    this._elementPhoto = this._element.querySelector('.element__photo');
 
     this._element.querySelector('.element__title').textContent = this._name;
-    this._element.querySelector('.element__photo').src = this._link;
-    this._element.querySelector('.element__photo').alt = this._name;
+    this._elementPhoto.src = this._link;
+    this._elementPhoto.alt = this._name;
 
     return this._element;
   }

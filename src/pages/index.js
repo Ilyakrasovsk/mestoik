@@ -19,7 +19,7 @@ import {
   popupAdd,
   popupImageCard,
   popupImage,
-  element,
+  //element,
   popupMesto,
   cardsContainer,
   cardElementTemplate,
@@ -27,14 +27,14 @@ import {
   inputLink,
   formCard,
   formElementProfile,
-  enableValidation
+  defultConfig
 } from '../utils/constants.js';
 
 const popupFullImage = new PopupWithImage(popupImageCard);
 
 const cardClick = (name, link) => {
   popupFullImage.open(name, link);
-}
+};
 
 const renderCard = function (data, cardSelector) {
 	return new Card({
@@ -51,7 +51,8 @@ const сardList = new Section ({
   renderer: (item) => {
 
     const card = renderCard(item, '#element-template');
-    const cardElement = card.generate();
+    //const card = renderCard(item, cardElementTemplate);
+    const cardElement = card.generateCard();
     сardList.setItem(cardElement);
   },
 },cardsContainer
@@ -65,7 +66,8 @@ const addModalCard = new PopupWithForm ({
 
       //const card = renderCard(data, user.getUserInfo(), '#element-template');
       const card = renderCard({ name: value.mesto, link: value.link}, '#element-template');
-      cardList.setItem(card.generate());
+      //const card = renderCard({ name: value.mesto, link: value.link}, cardElementTemplate);
+      cardList.setItem(card.generateCard());
       addModalCard.close();
   },
 });

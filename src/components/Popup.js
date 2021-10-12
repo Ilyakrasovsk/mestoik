@@ -15,7 +15,7 @@
   _handleEscClose(evt){
     //const popupActive = document.querySelector('.popup_open');
     if (evt.key === 'Escape') {
-    tihs.close();
+    this.close();
     }
   }
   _cardFormModalWindow(evt){

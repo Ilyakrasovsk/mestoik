@@ -25,7 +25,7 @@ export const elementCards = [
   }
 ];
 export const buttonEdit = document.querySelector('.profile__edit-button');
-export const popupProfile =  '.popup';
+export const popupProfile = '.popup_prof';
 export const nameInput = document.querySelector('#name');
 export const profInput = document.querySelector('#prof');
 export const profileName = document.querySelector('.profile__name');
@@ -47,9 +47,11 @@ export const defultConfig = {
   errorClass: 'popup__error_visible'
 };
 export const cardsContainer = '.elements';
-//export const cardElementTemplate = document.querySelector('#element__template').content;
+export const cardElementTemplate = document.querySelector('#element__template').content;
+
 
 export const inputMesto = document.querySelector('#mesto');
 export const inputLink = document.querySelector('#link');
 export const formCard = document.querySelector('.popup__input-container_add');
-export const formElementProfile = document.querySelector('.popup__container');
+//export const formElementProfile = document.querySelector('.popup__container');
+export const formElementProfile = document.querySelector('.popup__input-container_prof');

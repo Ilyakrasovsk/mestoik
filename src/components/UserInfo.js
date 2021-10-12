@@ -1,5 +1,5 @@
 export default class UserInfo {
-  constructor(userName, userProf){
+  constructor({userName, userProf}){
     this._userName = userName;
     this._userProf = userProf;
   }

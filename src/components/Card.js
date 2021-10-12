@@ -4,12 +4,13 @@ class Card {
     this._name = data.name;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
-    //this._data = data;
   }
   _getTemplate() {
-    const cardElement = document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
-
-    //const cardElement = document.querySelector(this._cardSelector).content.cloneNode(true);
+    const cardElement = document
+    .querySelector(this._cardSelector)
+    .content
+    .querySelector('.element')
+    .cloneNode(true);
     return cardElement;
   }
   generateCard() {
@@ -31,14 +32,18 @@ class Card {
     this._element = null;
   }
 
-  _setEventListener(){
-    this._element.querySelector('.element__like').addEventListener('click', (evt) => {
+  _setEventListeners(){
+    const buttonLike = this._element.querySelector('.element__like');
+    const buttonBasket = this._element.querySelector('.element__basket');
+    const buttonImage = this._element.querySelector('.element__photo');
+
+    buttonLike.addEventListener('click', (evt) => {
       this._cardLike(evt);
     });
-    this._element.querySelector('.element__basket').addEventListener('click', () => {
+    buttonBasket.addEventListener('click', () => {
       this._cardDelete();
     });
-    this._element.querySelector('.element__photo').addEventListener('click', () => {
+    buttonImage.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
     });
   }

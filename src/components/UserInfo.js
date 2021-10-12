@@ -1,17 +1,17 @@
 export default class UserInfo {
-  constructor(name, prof){
-    this._name = name;
-    this._prof = prof;
+  constructor(userName, userProf){
+    this._userName = userName;
+    this._userProf = userProf;
   }
   getUserInfo(){
     const profileInfo = {
-      name: this._name.textContent,
-      prof: this._prof.textContent
+      name: this._userName.textContent,
+      prof: this._userProf.textContent
     };
     return profileInfo;
   }
   setUserInfo(name, prof){
-    this._name.textContent = name;
-    this._prof.textContent = prof;
+    this._userName.textContent = name;
+    this._userProf.textContent = prof;
   }
 };

@@ -1,7 +1,7 @@
 import Popup from './Popup.js';
-//import {enableValidation} from '../utils/constants.js';
-export default class PopupWithForm extends Popup{
-  constructor(popupSelector, {formSabmitHandler}){
+
+class PopupWithForm extends Popup {
+  constructor({popupSelector, formSabmitHandler}){
     super(popupSelector);
     this._popup = super.returnPopup();
     this._formSabmitHandler = formSabmitHandler;
@@ -26,3 +26,4 @@ export default class PopupWithForm extends Popup{
     super.close();
   }
 };
+export default PopupWithForm;

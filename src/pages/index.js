@@ -30,100 +30,69 @@ import {
   enableValidation
 } from '../utils/constants.js';
 
-
-
 const popupFullImage = new PopupWithImage(popupImageCard);
 
 const cardClick = (name, link) => {
   popupFullImage.open(name, link);
-};
-const renderCard = function (data, selector) {
+}
+
+const renderCard = function (data, cardSelector) {
 	return new Card({
 		data: data,
 		handleCardClick: (name, link) => {
-			clickCard(name, link);
+			cardClick(name, link);
 		},
-	}, selector);
-};
-const cardList = new Section ({
+	}, cardSelector);
+}
+
+
+const сardList = new Section ({
   data: elementCards,
   renderer: (item) => {
-    // const card = new Card ({
-		// 	data: item,
-		// 	handleCardClick: (name, link) => {
-		// 		cardClick(name, link);
-		// 	},
-		// }, cardElementTemplate);
+
     const card = renderCard(item, '#element-template');
     const cardElement = card.generate();
-    cardList.addItem(cardElement);
+    сardList.setItem(cardElement);
   },
-},cardsContainer);
+},cardsContainer
+);
 
-cardList.renderItems();
+сardList.addItem();
 
 const addModalCard = new PopupWithForm ({
   popupSelector: popupAdd,
   formSabmitHandler: (value) => {
-    // const rendererCard = function (data, selector) {
-    //   return new Card ({
-    //     data: data,
-    //     handleCardClick: (name, link) => {
-    //       cardclick(name, link);
-    //     },
-    //   },selector);
-    // }
-    const card = rendererCard({ name: value.title, link: value.link }, '#element-template');
-    cardList.addItem(card.generate());
-    addModalCard.close();
+
+      //const card = renderCard(data, user.getUserInfo(), '#element-template');
+      const card = renderCard({ name: value.mesto, link: value.link}, '#element-template');
+      cardList.setItem(card.generate());
+      addModalCard.close();
   },
 });
 
-
-
-// function closePopupEscape (evt) {
-//   const popupActive = document.querySelector('.popup_open');
-//   if (evt.key === 'Escape') {
-//   closePopup(popupActive);
-//   }
-// };
-//
-// export function openPopup(popupElement) {
-//   popupElement.classList.add('popup_open');
-//   document.addEventListener('keydown', closePopupEscape);
-//   document.addEventListener('mousedown', cardFormModalWindow);
-// };
-//
-// function openProfilePopup() {
-//   nameInput.value = profileName.textContent;
-//   profInput.value = profileProf.textContent;
-//   openPopup(popupProfile);
-// };
-// function closePopup (popupElement) {
-//   popupElement.classList.remove('popup_open');
-//   document.removeEventListener('keydown', closePopupEscape);
-// };
-//buttonEdit.addEventListener('click', () => openProfilePopup(popupProfile));
+// buttonEdit.addEventListener('click', () => openProfilePopup(popupProfile));
 buttonPopupAdd.addEventListener('click', () => {
   addModalCard.open();
-  inputMesto.value = '';
-  inputLink.value = '';
+  formCard.mesto.value = '';
+  formCard.link.value = '';
 });
 
-const user = new UserInfo(name, prof);
+const user = new UserInfo(userName, userProf);
 
 const addModalProfile = new PopupWithForm({
   popupSelector: popupProfile,
   formSabmitHandler: (value) => {
-    user.setUserInfo(value.name, value.prof);
-    addModalProfile.close();
+
+      user.setUserInfo(value.name, value.prof);
+      addModalProfile.close();
+
   }
 });
 buttonEdit.addEventListener('click', () => {
   addModalProfile.open();
-  const userItem = user.getUserInfo();
-	formElementProfile.name.value = userItem.name;
-	formElementProfile.prof.value = userItem.prof;
+  const userData = user.getUserInfo();
+	formElementProfile.name.value = userData.name;
+	formElementProfile.prof.value = userData.prof;
 });
 
 
@@ -165,8 +134,8 @@ buttonEdit.addEventListener('click', () => {
 //     closePopup(activePopup);
 //   }
 // };
-const cardFormValidity = new FormValidator(enableValidation, formCard);
-const profileElementFormValidity = new FormValidator(enableValidation, formElementProfile);
+const cardFormValidity = new FormValidator(defultConfig, formCard);
+const profileElementFormValidity = new FormValidator(defultConfig, formElementProfile);
 addModalProfile.setEventListeners();
 addModalCard.setEventListeners();
 popupFullImage.setEventListeners();

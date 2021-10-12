@@ -38,7 +38,7 @@ export const popupImage = popupImageCard.querySelector('.popup__imag');
 export const element = document.querySelector('.element');
 export const popupMesto = popupImageCard.querySelector('.popup__mesto');
 
-export const enableValidation = {
+export const defultConfig = {
   formSelector: '.popup__input-container',
   inputSelector: '.popup__item',
   submitButtonSelector: '.popup__button',

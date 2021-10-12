@@ -1,24 +1,16 @@
-export default class Popup {
+ class Popup {
   constructor(popupSelector){
     this._popup = document.querySelector(popupSelector);
   }
   open(){
     this._popup.classList.add('popup_open');
     document.addEventListener('keydown',this._handleEscClose.bind(this));
-    // document.addEventListener('keydown',(evt) => {
-    //   this._handleEscClose(evt);});
     document.addEventListener('mousedown',this._cardFormModalWindow.bind(this));
-    // document.addEventListener('mousedown',(evt) => {
-    //   this._cardFormModalWindow(evt);});
   }
   close(){
     this._popup.classList.remove('popup_open');
-    document.addEventListener('keydown',this._handleEscClose.bind(this));
-      document.addEventListener('mousedown',this._cardFormModalWindow.bind(this));
-    // document.removeEventListener('keydown', (evt) => {
-    //   this._handleEscClose(evt);});
-    // document.addEventListener('mousedown', (evt) => {
-    //   this._cardFormModalWindow(evt);});
+    document.removeEventListener('keydown',this._handleEscClose.bind(this));
+      document.removeEventListener('mousedown',this._cardFormModalWindow.bind(this));
   }
   _handleEscClose(evt){
     //const popupActive = document.querySelector('.popup_open');
@@ -42,3 +34,4 @@ export default class Popup {
     return this._popup;
   }
 };
+export default Popup;

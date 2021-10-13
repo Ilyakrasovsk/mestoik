@@ -13,7 +13,7 @@ class Card {
     .cloneNode(true);
     return cardElement;
   }
-  generateCard() {
+  generate() {
     this._element = this._getTemplate();
     this._setEventListeners();
     this._elementPhoto = this._element.querySelector('.element__photo');
@@ -31,7 +31,6 @@ class Card {
     this._element.remove();
     this._element = null;
   }
-
   _setEventListeners(){
     const buttonLike = this._element.querySelector('.element__like');
     const buttonBasket = this._element.querySelector('.element__basket');

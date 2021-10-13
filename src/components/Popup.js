@@ -13,13 +13,11 @@
       document.removeEventListener('mousedown',this._cardFormModalWindow.bind(this));
   }
   _handleEscClose(evt){
-    //const popupActive = document.querySelector('.popup_open');
     if (evt.key === 'Escape') {
     this.close();
     }
   }
   _cardFormModalWindow(evt){
-    //const activePopup = document.querySelector('.popup_open');
     if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__cross')) {
       this.close();
     }

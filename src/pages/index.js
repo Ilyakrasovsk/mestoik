@@ -47,13 +47,12 @@ const renderCard = function (data, cardSelector) {
   return card;
 }
 
-
 const cardList = new Section ({
   data: elementCards,
   renderer: (item) => {
 
     const card = renderCard(item, '#element__template');
-    const cardElement = card.generateCard();
+    const cardElement = card.generate();
     cardList.setItem(cardElement);
   },
 },cardsContainer
@@ -66,13 +65,11 @@ const addModalCard = new PopupWithForm ({
   formSabmitHandler: (value) => {
       const card = renderCard({ name: value.mesto, link: value.link}, '#element__template');
       //const card = renderCard(value, user.getUserInfo(), '#element__template');
-
-      cardList.setItem(card.generateCard());
+      cardList.setItem(card.generate());
       addModalCard.close();
   },
 });
 
-// buttonEdit.addEventListener('click', () => openProfilePopup(popupProfile));
 buttonPopupAdd.addEventListener('click', () => {
   addModalCard.open();
   formCard.mesto.value = '';
@@ -84,12 +81,11 @@ const user = new UserInfo({userName: profileName, userProf: profileProf});
 const addModalProfile = new PopupWithForm({
   popupSelector: popupProfile,
   formSabmitHandler: (value) => {
-
       user.setUserInfo(value.name, value.prof);
       addModalProfile.close();
-
   }
 });
+
 buttonEdit.addEventListener('click', () => {
   addModalProfile.open();
   const userData = user.getUserInfo();

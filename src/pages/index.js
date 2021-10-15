@@ -11,21 +11,12 @@ import {
   elementCards,
   buttonEdit,
   popupProfile,
-  nameInput,
-  profInput,
   profileName,
   profileProf,
   buttonPopupAdd,
   popupAdd,
   popupImageCard,
-  popupImage,
-  //element,
-  popupMesto,
   cardsContainer,
-  cardElementTemplate,
-  //cardSelector,
-  inputMesto,
-  inputLink,
   formCard,
   formElementProfile,
   defultConfig
@@ -64,7 +55,7 @@ const addModalCard = new PopupWithForm ({
   popupSelector: popupAdd,
   formSabmitHandler: (value) => {
       const card = renderCard({ name: value.mesto, link: value.link}, '#element__template');
-      //const card = renderCard(value, user.getUserInfo(), '#element__template');
+
       cardList.setItem(card.generate());
       addModalCard.close();
   },

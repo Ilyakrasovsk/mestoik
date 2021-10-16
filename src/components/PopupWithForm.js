@@ -15,15 +15,15 @@ class PopupWithForm extends Popup {
   }
   setEventListeners(){
     this._popup.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-        this._formSabmitHandler(this._getInputValues());
-      })
-
-      this._popup.querySelector('.popup__input-container').reset();
-      super.setEventListeners();
+      evt.preventDefault();
+      this._formSabmitHandler(this._getInputValues());
+    })
+      //this._popup.querySelector('.popup__input-container').reset();
+    super.setEventListeners();
   }
   close(){
     super.close();
+    this._popup.querySelector('.popup__input-container').reset();
   }
 };
 export default PopupWithForm;

@@ -54,15 +54,15 @@ cardList.addItem();
 const addModalCard = new PopupWithForm ({
   popupSelector: popupAdd,
   formSabmitHandler: (value) => {
-      const card = renderCard({ name: value.mesto, link: value.link}, '#element__template');
-
-      cardList.setItem(card.generate());
-      addModalCard.close();
+    const card = renderCard({ name: value.mesto, link: value.link}, '#element__template');
+    cardList.setItem(card.generate());
+    addModalCard.close();
   },
 });
 
 buttonPopupAdd.addEventListener('click', () => {
   addModalCard.open();
+  cardFormValidity.disableSubmitButton();
   formCard.mesto.value = '';
   formCard.link.value = '';
 });
@@ -72,8 +72,8 @@ const user = new UserInfo({userName: profileName, userProf: profileProf});
 const addModalProfile = new PopupWithForm({
   popupSelector: popupProfile,
   formSabmitHandler: (value) => {
-      user.setUserInfo(value.name, value.prof);
-      addModalProfile.close();
+    user.setUserInfo(value.name, value.prof);
+    addModalProfile.close();
   }
 });
 

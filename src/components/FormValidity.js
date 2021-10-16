@@ -2,6 +2,7 @@ class FormValidator {
   constructor(seting, formElement){
     this._formElement = formElement;
     this._seting = seting;
+    this._buttonElement = this._formElement.querySelector(this._seting.submitButtonSelector);
   }
   _showInputError(inputElement) {
     inputElement.classList.add(this._seting.inputErrorClass);
@@ -33,25 +34,26 @@ class FormValidator {
     });
   }
   _toggleButtonState() {
-    this._buttonElement = this._formElement.querySelector(this._seting.submitButtonSelector);
     if (this._hasInvalidInput(this._inputList) || this._hasNoInputValid(this._inputList)) {
-      this._disableSubmitButton();
+      this.disableSubmitButton();
     } else {
       this._enebleSubmitButton();
     }
   }
-  _disableSubmitButton() {
+  disableSubmitButton() {
       this._buttonElement.classList.add(this._seting.inactiveButtonClass);
+      this._buttonElement.disabled = true;
   }
   _enebleSubmitButton() {
     this._buttonElement.classList.remove(this._seting.inactiveButtonClass);
+    this._buttonElement.disabled = false;
   }
   _setEventListener() {
-    this._formElement.addEventListener('submit', (event) => {
-      event.preventDefault();
-      this._disableSubmitButton();
-
-    });
+    // this._formElement.addEventListener('submit', (event) => {
+    //   event.preventDefault();
+    //   this._disableSubmitButton();
+    //
+    // });
     this._inputList = Array.from(this._formElement.querySelectorAll(this._seting.inputSelector));
     this._inputList.forEach(inputElement => {
       inputElement.addEventListener('input', ()=> {
@@ -62,10 +64,16 @@ class FormValidator {
     this._toggleButtonState();
   }
   enableValidation(){
-    this._formList = document.querySelectorAll(this._seting.formSelector);
-    this._formList.forEach(formElement => {
-      this._setEventListener();
+    // this._formList = document.querySelectorAll(this._seting.formSelector);
+    // this._formList.forEach(formElement => {
+    //   this._setEventListener();
+    // });
+    this._formElement.addEventListener('submit', (event) => {
+      event.preventDefault();
+      this.disableSubmitButton();
+
     });
+    this._setEventListener();
   }
 }
 export default FormValidator;

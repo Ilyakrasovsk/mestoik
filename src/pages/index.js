@@ -7,7 +7,6 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import PopupWithDelete from '../components/PopupWithDelete.js';
-import {api} from '../components/Api.js';
 
 import {
   elementCards,
@@ -28,6 +27,7 @@ import {
   defultConfig
 } from '../utils/constants.js';
 
+import {api} from '../components/Api.js';
 const popupFullImage = new PopupWithImage(popupImageCard);
 
 const cardClick = (name, link) => {
@@ -61,7 +61,7 @@ const renderCard = function (data, userData, cardSelector) {
       }
     },
     handleDelIconClick: (element, cardId) => {
-      modalDeleteCard.open({element, cardId})
+      delModalCard.open({element, cardId})
     },
   },cardSelector);
   return card;
@@ -69,7 +69,7 @@ const renderCard = function (data, userData, cardSelector) {
 
 const cardList = new Section ({
   data: {},
-  renderer: (item, _userData) => {
+  renderer: (item, userData) => {
 
     const card = renderCard(item, userData, '#element__template');
     const cardElement = card.generate();
@@ -79,7 +79,7 @@ const cardList = new Section ({
 );
 
 //cardList.addItem();
-const promises = [api.getCardInitial(), api.getInfoPersone()];
+const promises = [api.getCardInitial(), api.getInfoPersone()]
 Promise.all(promises)
   .then(([resCard, resUser]) => {
     user.setUserInfo(resUser._id, resUser.name, resUser.about, resUser.avatar);
@@ -194,12 +194,12 @@ const delModalCard = new PopupWithDelete({
   }
 })
 
-buttonEdit.addEventListener('click', () => {
-  addModalProfile.open();
-  const userData = user.getUserInfo();
-	formElementProfile.name.value = userData.name;
-	formElementProfile.prof.value = userData.prof;
-});
+// buttonEdit.addEventListener('click', () => {
+//   addModalProfile.open();
+//   const userData = user.getUserInfo();
+// 	formElementProfile.name.value = userData.name;
+// 	formElementProfile.prof.value = userData.prof;
+// });
 
 const cardFormValidity = new FormValidator(defultConfig, formCard);
 const profileElementFormValidity = new FormValidator(defultConfig, formElementProfile);

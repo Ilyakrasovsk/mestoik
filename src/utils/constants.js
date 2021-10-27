@@ -21,3 +21,5 @@ export const cardsContainer = '.elements';
 export const formCard = document.querySelector('.popup__input-container_add');
 export const formElementProfile = document.querySelector('.popup__input-container_prof');
 export const formElementAvatar = document.querySelector('.popup__input-container_avatar');
+// export const profileName = document.querySelector('.profile__name');
+// export const profileProf = document.querySelector('.profile__prof');

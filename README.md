@@ -16,4 +16,4 @@
 * Применяется JS для всплывающей формы- редактирования профиля.
 
 **GitHub Pages**
-https://ilyakrasovsk.github.io/mestoik/index.html
+https://ilyakrasovsk.github.io/mestoik/

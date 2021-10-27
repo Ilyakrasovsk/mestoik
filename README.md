@@ -15,5 +15,5 @@
 * Применена технология построения сеток ”Grid Layout“ и "flex".
 * Применяется JS для всплывающей формы- редактирования профиля.
 
-**GitHub Pages**
-https://ilyakrasovsk.github.io/mestoik/
+**GitHub Pages**  
+https://Ilyakrasovsk.github.io/mestoik

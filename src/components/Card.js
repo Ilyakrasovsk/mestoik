@@ -23,9 +23,9 @@ class Card {
     this._cardDelete();
     this.likesNumber(this._data);
 
+    this._buttonImage.src = this._link;
+    this._buttonImage.alt = this._name;
     this._element.querySelector('.element__title').textContent = this._name;
-    this._elementPhoto.src = this._link;
-    this._elementPhoto.alt = this._name;
 
     return this._element;
   }

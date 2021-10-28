@@ -7,7 +7,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import PopupWithDelete from '../components/PopupWithDelete.js';
-
+import Api from '../components/Api.js';
 import {
   buttonEdit,
   popupProfile,
@@ -26,7 +26,13 @@ import {
   defultConfig
 } from '../utils/constants.js';
 
-import { api } from '../components/Api.js';
+const api = new Api({
+  baseUrl: 'https://nomoreparties.co/v1/cohort-29',
+  headers: {
+    authorization: '66763194-dff7-4592-9eca-89f9d6503745',
+    "content-type": 'application/json'
+  }
+});
 const popupFullImage = new PopupWithImage(popupImageCard);
 
 const cardClick = (name, link) => {
@@ -66,7 +72,7 @@ const renderCard = function (data, userData, cardSelector) {
   return card;
 }
 
-const cardList = new Section ({
+const cardList = new Section({
   data: {},
   renderer: (item, userData) => {
 

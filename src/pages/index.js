@@ -9,11 +9,10 @@ import Section from '../components/Section.js';
 import PopupWithDelete from '../components/PopupWithDelete.js';
 
 import {
-  elementCards,
   buttonEdit,
   popupProfile,
-  profileName,
-  profileProf,
+  userName,
+  userProf,
   buttonPopupAdd,
   popupAdd,
   popupImageCard,
@@ -27,12 +26,12 @@ import {
   defultConfig
 } from '../utils/constants.js';
 
-import {api} from '../components/Api.js';
+import { api } from '../components/Api.js';
 const popupFullImage = new PopupWithImage(popupImageCard);
 
 const cardClick = (name, link) => {
   popupFullImage.open(name, link);
-};
+}
 
 const renderCard = function (data, userData, cardSelector) {
 	const card = new Card({
@@ -79,7 +78,8 @@ const cardList = new Section ({
 );
 
 //cardList.addItem();
-const promises = [api.getCardInitial(), api.getInfoPersone()]
+const promises = [api.getCardInitial(), api.getInfoPersone()];
+
 Promise.all(promises)
   .then(([resCard, resUser]) => {
     user.setUserInfo(resUser._id, resUser.name, resUser.about, resUser.avatar);
@@ -124,9 +124,9 @@ function loadingRender(popup, isLoad) {
   } else {
     popupButton.value = 'Сохранить';
   }
-}
+};
 
-const addModalCard = new PopupWithForm ({
+const addModalCard = new PopupWithForm({
   popupSelector: popupAdd,
   formSabmitHandler: (value) => {
     loadingRender(popupAdd, true);
@@ -146,13 +146,17 @@ const addModalCard = new PopupWithForm ({
   },
 });
 
-const user = new UserInfo({userName: profileName, userProf: profileProf, userAvatar: avatarProfile});
+const user = new UserInfo({
+  userName: userName,
+  userProf: userProf,
+  userAvatar: avatarProfile
+});
 
 const addModalProfile = new PopupWithForm({
   popupSelector: popupProfile,
   formSabmitHandler: (value) => {
     loadingRender(popupProfile, true);
-    api.userInfo({ name: value.name, about: value.prof })
+    api.sendUserInfo({ name: value.name, about: value.prof })
     .then(data => {
       user.setUserInfo(data._id, data.name, data.about, data.avatar);
       addModalProfile.close();
@@ -168,7 +172,7 @@ const addModalAvatar = new PopupWithForm({
   popupSelector: popupAvatar,
   formSabmitHandler: (value) => {
     loadingRender(popupAvatar, true);
-    api.editAvatar({ avatar: value.link})
+    api.editAvatar({avatar: value.link})
     .then(data => {
       user.setUserInfo(data._id, data.name, data.about, data.avatar);
       addModalAvatar.close();
@@ -178,7 +182,7 @@ const addModalAvatar = new PopupWithForm({
       console.log(error)
     });
   }
-})
+});
 
 const delModalCard = new PopupWithDelete({
   popupSelector: popupDeleteCard,
@@ -192,14 +196,7 @@ const delModalCard = new PopupWithDelete({
       console.log(error)
     });
   }
-})
-
-// buttonEdit.addEventListener('click', () => {
-//   addModalProfile.open();
-//   const userData = user.getUserInfo();
-// 	formElementProfile.name.value = userData.name;
-// 	formElementProfile.prof.value = userData.prof;
-// });
+});
 
 const cardFormValidity = new FormValidator(defultConfig, formCard);
 const profileElementFormValidity = new FormValidator(defultConfig, formElementProfile);

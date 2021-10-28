@@ -1,7 +1,7 @@
 export const buttonEdit = document.querySelector('.profile__edit-button');
 export const popupProfile = '.popup_prof';
-export const profileName = '.profile__name';
-export const profileProf = '.profile__prof';
+// export const userName = '.profile__name';
+// export const userProf = '.profile__prof';
 export const buttonPopupAdd = document.querySelector('.profile__add-button');
 export const popupAdd = '.popup_add';
 export const popupImageCard = '.popup_images';
@@ -21,5 +21,5 @@ export const cardsContainer = '.elements';
 export const formCard = document.querySelector('.popup__input-container_add');
 export const formElementProfile = document.querySelector('.popup__input-container_prof');
 export const formElementAvatar = document.querySelector('.popup__input-container_avatar');
-// export const profileName = document.querySelector('.profile__name');
-// export const profileProf = document.querySelector('.profile__prof');
+export const userName = document.querySelector('.profile__name');
+export const userProf = document.querySelector('.profile__prof');

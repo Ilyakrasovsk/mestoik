@@ -10,14 +10,11 @@ class Api {
       }
     })
       .then(res => {
-        if(res.ok) {
+        if (res.ok) {
           return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      .catch(err => {
-        console.log(`Ошибка: ${err}`);
-      });
   }
   getInfoPersone() {
     return fetch('https://mesto.nomoreparties.co/v1/cohort-29/users/me', {
@@ -33,11 +30,8 @@ class Api {
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      .catch(err => {
-        console.log(`Ошибка: ${err}`);
-      });
   }
-  userInfo(data) {
+  sendUserInfo(data) {
     return fetch('https://mesto.nomoreparties.co/v1/cohort-29/users/me', {
       method: 'PATCH',
       headers: {
@@ -50,14 +44,12 @@ class Api {
       })
     })
       .then(res => {
+
         if (res.ok) {
           return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      .catch(err => {
-        console.log(`Ошибка: ${err}`);
-      });
   }
   addNewCard(data) {
     return fetch('https://mesto.nomoreparties.co/v1/cohort-29/cards', {
@@ -77,9 +69,6 @@ class Api {
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      .catch(err => {
-        console.log(`Ошибка: ${err}`);
-      });
   }
   deleteCard(cardId) {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-29/cards/${cardId}`, {
@@ -95,9 +84,6 @@ class Api {
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      .catch(err => {
-        console.log(`Ошибка: ${err}`);
-      });
   }
   likeCard(cardId) {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-29/cards/likes/${cardId}`, {
@@ -113,9 +99,6 @@ class Api {
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      .catch(err => {
-        console.log(`Ошибка: ${err}`);
-      });
   }
   cardLikeRemove(cardId) {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-29/cards/likes/${cardId}`, {
@@ -131,9 +114,6 @@ class Api {
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      .catch(err => {
-        console.log(`Ошибка: ${err}`);
-      });
   }
   editAvatar(data) {
     return fetch('https://mesto.nomoreparties.co/v1/cohort-29/users/me/avatar', {
@@ -143,7 +123,7 @@ class Api {
       'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        avatar: data.avatar,
+        avatar: data.avatar
       })
     })
       .then(res => {
@@ -152,9 +132,7 @@ class Api {
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      .catch(err => {
-        console.log(`Ошибка: ${err}`);
-      });
   }
-}
+};
+
 export const api = new Api();

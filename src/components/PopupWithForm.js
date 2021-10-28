@@ -6,8 +6,8 @@ class PopupWithForm extends Popup {
     this._popup = super.returnPopup();
     this._formSabmitHandler = formSabmitHandler;
     this._inputSelectors = this._popup.querySelectorAll('.popup__item');
-    //this._popupButton = this._popup.querySelectorAll('.popup__button');
-    //this._popupButtonValue = this._popupButtonValue.value;
+    this._popupButton = this._popup.querySelector('.popup__button');
+    this._popupButtonValue = this._popupButton.value;
   }
   _getInputValues(){
     this._formValid = {};
@@ -20,12 +20,12 @@ class PopupWithForm extends Popup {
       evt.preventDefault();
       this._formSabmitHandler(this._getInputValues());
     })
-    this._popup.querySelector('.popup__input-container').reset();
+    //this._popup.querySelector('.popup__input-container').reset();
     super.setEventListeners();
   }
   close(){
     super.close();
-    //this._popup.querySelector('.popup__input-container').reset();
+    this._popup.querySelector('.popup__input-container').reset();
   }
 };
 export default PopupWithForm;

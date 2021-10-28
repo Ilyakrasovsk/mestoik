@@ -1,4 +1,5 @@
-import Popup from './Popup.js';
+import Popup from './Popup.js'
+
 class PopupWithDelete extends Popup{
   constructor({popupSelector, formSabmitHandler}) {
     super(popupSelector);

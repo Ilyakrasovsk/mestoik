@@ -8,6 +8,11 @@ class Card {
     this._handleLikeClick = handleLikeClick;
     this._handleDelIconClick = handleDelIconClick;
     this._userData = userData
+    // this._buttonLike = this._element.querySelector('.element__like');
+    // this._buttonBasket = this._element.querySelector('.element__basket');
+    // this._buttonImage = this._element.querySelector('.element__photo');
+    // this._likeQuantity = this._element.qeurySelector('.element__quantity');
+
   }
   _getTemplate() {
     const cardElement = document
@@ -51,7 +56,7 @@ class Card {
     this._buttonLike = this._element.querySelector('.element__like');
     this._buttonBasket = this._element.querySelector('.element__basket');
     this._buttonImage = this._element.querySelector('.element__photo');
-    this._likeQuantity = this._element.qeurySelector('.element__quantity');
+    this._likeQuantity = this._element.querySelector('.element__quantity');
 
     this._buttonLike.addEventListener('click', () => {
       this._handleLikeClick(this._data._id)

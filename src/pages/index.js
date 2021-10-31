@@ -32,7 +32,7 @@ const api = new Api({
     authorization: '66763194-dff7-4592-9eca-89f9d6503745',
     "content-type": 'application/json'
   }
-});
+})
 const popupFullImage = new PopupWithImage(popupImageCard);
 
 const cardClick = (name, link) => {
@@ -75,7 +75,6 @@ const renderCard = function (data, userData, cardSelector) {
 const cardList = new Section({
   data: {},
   renderer: (item, userData) => {
-
     const card = renderCard(item, userData, '#element__template');
     const cardElement = card.generate();
     cardList.setItem(cardElement);
@@ -84,7 +83,7 @@ const cardList = new Section({
 );
 
 //cardList.addItem();
-const promises = [api.getCardInitial(), api.getInfoPersone()];
+const promises = [api.getCardInitial(), api.getInfoPersone()]
 
 Promise.all(promises)
   .then(([resCard, resUser]) => {
@@ -107,7 +106,7 @@ Promise.all(promises)
       avatarFormValidity.enebleSubmitButton();
       formElementAvatar.reset();
       addModalAvatar.open();
-      formElementAvatar.link.value = user.getUserInfo().avatar;
+      formElementAvatar.linkAv.value = user.getUserInfo().avatar;
     });
 
     buttonPopupAdd.addEventListener('click', () => {
@@ -120,7 +119,7 @@ Promise.all(promises)
     });
   })
   .catch((error) => {
-    console.log(error)
+    console.log(error);
   })
 
 function loadingRender(popup, isLoad) {
@@ -130,14 +129,14 @@ function loadingRender(popup, isLoad) {
   } else {
     popupButton.value = 'Сохранить';
   }
-};
+}
 
 const addModalCard = new PopupWithForm({
   popupSelector: popupAdd,
   formSabmitHandler: (value) => {
     loadingRender(popupAdd, true);
     api.addNewCard({
-      name: value.title,
+      name: value.mesto,
       link: value.link
     })
     .then(data => {
@@ -200,7 +199,7 @@ const delModalCard = new PopupWithDelete({
     })
     .catch((error) => {
       console.log(error)
-    });
+    })
   }
 });
 

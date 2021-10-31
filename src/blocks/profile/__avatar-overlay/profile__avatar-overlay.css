@@ -21,6 +21,7 @@
   background-repeat: no-repeat;
   background-color: #000;
   opacity: 0;
+  pointer-events: none;
 }
 .profile__avatar-overlay:hover:before {
   opacity: .8;

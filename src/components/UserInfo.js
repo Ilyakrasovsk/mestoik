@@ -20,6 +20,6 @@ export default class UserInfo {
     this._id = id;
     this._userName.textContent = name;
     this._userProf.textContent = about;
-    this._userAvatar.src = avatar;
+    this._userAvatar.src = avatar
   }
 };

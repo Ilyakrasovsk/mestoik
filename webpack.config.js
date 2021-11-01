@@ -19,21 +19,27 @@ module.exports = {
     compress: true,
     port: 8080
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      experimentalUseImportModule: true,
+    }),
+  ],
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.js$/,
         use: 'babel-loader',
         exclude: '/node_modules/'
       },
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
-      },
-      {
         test: /\.(png|jpg|jpeg|gif)$/,
-      type: 'asset/resource',
-      generator: {
-        filename: 'images/[name].[hash][ext]',
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name].[hash][ext]',
         }
       },
       {
@@ -51,7 +57,7 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, {
             loader: 'css-loader',
             options: {
@@ -62,13 +68,5 @@ module.exports = {
         ]
       },
     ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html'
-    }),
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
-
-  ]
+  }
 }

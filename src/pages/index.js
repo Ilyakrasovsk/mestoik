@@ -143,12 +143,14 @@ const addModalCard = new PopupWithForm({
       const card = renderCard(data, user.getUserInfo(), '#element__template');
       cardList.setPreItem(card.generate());
       addModalCard.close();
-      loadingRender(popupAdd, false);
     })
     .catch((error) => {
       console.log(error)
+    })
+    .finally((ignore) => {
+      loadingRender(popupAdd, false);
     });
-  },
+  }
 });
 
 const user = new UserInfo({
@@ -165,10 +167,12 @@ const addModalProfile = new PopupWithForm({
     .then(data => {
       user.setUserInfo(data._id, data.name, data.about, data.avatar);
       addModalProfile.close();
-      loadingRender(popupProfile, false);
     })
     .catch((error) => {
       console.log(error)
+    })
+    .finally((ignore) => {
+      loadingRender(popupProfile, false);
     });
   }
 });
@@ -181,10 +185,12 @@ const addModalAvatar = new PopupWithForm({
     .then(data => {
       user.setUserInfo(data._id, data.name, data.about, data.avatar);
       addModalAvatar.close();
-      loadingRender(popupAvatar, false);
     })
     .catch((error) => {
       console.log(error)
+    })
+    .finally((ignore) => {
+      loadingRender(popupAvatar, false);
     });
   }
 });
@@ -199,7 +205,7 @@ const delModalCard = new PopupWithDelete({
     })
     .catch((error) => {
       console.log(error)
-    })
+    });
   }
 });
 

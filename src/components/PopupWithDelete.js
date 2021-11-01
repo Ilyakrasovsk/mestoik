@@ -3,7 +3,6 @@ import Popup from './Popup.js'
 class PopupWithDelete extends Popup{
   constructor({popupSelector, formSabmitHandler}) {
     super(popupSelector);
-    this._popup = super.returnPopup();
     this._formSabmitHandler = formSabmitHandler;
   }
   setEventListeners() {
@@ -16,9 +15,6 @@ class PopupWithDelete extends Popup{
   open(data) {
     super.open();
     this._deleteElement = data;
-  }
-  close() {
-    super.close();
   }
 }
 export default PopupWithDelete;

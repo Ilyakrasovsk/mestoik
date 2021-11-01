@@ -82,7 +82,6 @@ const cardList = new Section({
 },cardsContainer
 );
 
-//cardList.addItem();
 const promises = [api.getCardInitial(), api.getInfoPersone()]
 
 Promise.all(promises)
@@ -94,7 +93,6 @@ Promise.all(promises)
     buttonEdit.addEventListener('click', () => {
       profileElementFormValidity.disableInptErr();
       profileElementFormValidity.enebleSubmitButton();
-      formElementProfile.reset();
       addModalProfile.open();
       const userData = user.getUserInfo();
     	formElementProfile.name.value = userData.name;
@@ -103,19 +101,14 @@ Promise.all(promises)
 
     avatarProfile.addEventListener('click', () => {
       avatarFormValidity.disableInptErr();
-      avatarFormValidity.enebleSubmitButton();
-      formElementAvatar.reset();
+      avatarFormValidity.disableSubmitButton();
       addModalAvatar.open();
-      formElementAvatar.linkAv.value = user.getUserInfo().avatar;
     });
 
     buttonPopupAdd.addEventListener('click', () => {
       cardFormValidity.disableInptErr();
       cardFormValidity.disableSubmitButton();
-      formCard.reset();
       addModalCard.open();
-      formCard.mesto.value = '';
-      formCard.link.value = '';
     });
   })
   .catch((error) => {

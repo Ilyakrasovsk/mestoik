@@ -3,7 +3,6 @@ import Popup from './Popup.js';
 class PopupWithForm extends Popup {
   constructor({popupSelector, formSabmitHandler}){
     super(popupSelector);
-    this._popup = super.returnPopup();
     this._formSabmitHandler = formSabmitHandler;
     this._inputSelectors = this._popup.querySelectorAll('.popup__item');
     this._popupButton = this._popup.querySelector('.popup__button');
@@ -20,7 +19,6 @@ class PopupWithForm extends Popup {
       evt.preventDefault();
       this._formSabmitHandler(this._getInputValues());
     })
-    //this._popup.querySelector('.popup__input-container').reset();
     super.setEventListeners();
   }
   close(){
